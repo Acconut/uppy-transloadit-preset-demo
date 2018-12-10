@@ -9,6 +9,10 @@ function initUser (app) {
     failureRedirect: '/',
     failureFlash: 'what are you doing?',
   }))
+  app.post('/logout', function(req, res) {
+    req.logout()
+    res.redirect('/');
+  });
 }
 
 function renderWelcome (req, res) {

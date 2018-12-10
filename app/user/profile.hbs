@@ -1,3 +1,10 @@
-<h3>Hey, {{username}}!</h3>
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column ui segment">
+    <h2 class="ui header">Hey, {{username}}!<h2>
 
-You successfully logged-in \o/
+    <form action="/logout" method="POST" class="ui form">
+      <button class="ui button" type="submit">Log out</button>
+    </form>
+  </div>
+</div>
