@@ -4,8 +4,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const session = require('express-session')
-const RedisStore = require('connect-redis')(session)
+const cookieSession = require('cookie-session')
+const flash = require('connect-flash')
 
 const config = require('../config')
 const app = express()
@@ -16,14 +16,19 @@ app.use(bodyParser.urlencoded({
 
 require('./authentication').init(app)
 
-app.use(session({
-  store: new RedisStore({
-    url: config.redisStore.url
-  }),
-  secret: config.redisStore.secret,
-  resave: false,
-  saveUninitialized: false
+app.use(cookieSession({
+  name: 'session',
+  keys: ["Tstgertgregert"],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
+app.use(flash())
+
+app.use(function(req, res, next) {
+  res.locals.error_message = req.flash('error');
+  next();
+})
 
 app.use(passport.initialize())
 app.use(passport.session())
