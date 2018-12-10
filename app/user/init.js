@@ -46,9 +46,14 @@ function renderSignup (req, res) {
   res.render('user/signup')
 }
 
-function renderProfile (req, res) {
-  res.render('user/profile', {
-    username: req.user.username
+function renderProfile (req, res, next) {
+  db.listUsers(function(err, users) {
+    if(err) return next(err)
+
+    res.render('user/profile', {
+      users: users,
+      username: req.user.username
+    })
   })
 }
 

@@ -7,7 +7,7 @@ const db = new Datastore({
 });
 
 function listUsers(callback) {
-
+  db.find({}, callback);
 }
 
 function findUser(username, callback) {
@@ -26,7 +26,8 @@ function createUser(username, password, callback) {
     const user = {
       id: uuid(),
       username: username,
-      passwordHash: hash
+      passwordHash: hash,
+      avatarUrl: 'https://api.adorable.io/avatars/300/' + username
     }
 
     db.insert(user, callback);

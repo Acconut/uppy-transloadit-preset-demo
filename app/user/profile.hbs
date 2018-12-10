@@ -1,7 +1,24 @@
 <div class="ui grid">
-  <div class="four wide column"></div>
-  <div class="eight wide column ui segment">
-    <h2 class="ui header">Hey, {{username}}!<h2>
+  <div class="three wide column"></div>
+  <div class="nine wide column ui segment">
+    <h2 class="ui header">Hey, {{username}}!</h2>
+
+    <p>
+      Below you find a list of all registered users:
+    </p>
+
+    <div class="ui cards">
+      {{#each users}}
+        <div class="ui card">
+          <div class="image">
+            <img src="{{avatarUrl}}">
+          </div>
+          <div class="content">
+            <a class="header">{{username}}</a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
 
     <form action="/logout" method="POST" class="ui form">
       <button class="ui button" type="submit">Log out</button>
