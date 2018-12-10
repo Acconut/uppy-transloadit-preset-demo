@@ -1,7 +1,7 @@
-const passport = require('passport')
+const middleware = require('../authentication/middleware')
 
 function initUser (app) {
-  app.get('/notes/:id', passport.authenticationMiddleware(), (req, res) => {
+  app.get('/notes/:id', middleware.authenticationRequired(), (req, res) => {
     res.render('note/overview', {
       id: req.params.id
     })

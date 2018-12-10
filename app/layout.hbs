@@ -2,11 +2,21 @@
 <html lang="en">
   <head>
     <title>Node Hero - Authentication Tutorial</title>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" />
   </head>
 
   <body>
-    {{error_message}}
-    {{{body}}}
+    <div class="ui container">
+      {{#if error_message}}
+        <div class="ui warning message">
+          <div class="header">
+            Oh no!
+          </div>
+          {{error_message}}
+        </div>
+      {{/if}}
+
+      {{{body}}}
+    </div>
   </body>
 </html>

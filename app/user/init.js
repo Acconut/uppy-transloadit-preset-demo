@@ -1,8 +1,9 @@
 const passport = require('passport')
+const middleware = require('../authentication/middleware')
 
 function initUser (app) {
-  app.get('/', renderWelcome)
-  app.get('/profile', passport.authenticationMiddleware(), renderProfile)
+  app.get('/', middleware.authenticationProhibited(), renderWelcome)
+  app.get('/profile', middleware.authenticationRequired(), renderProfile)
   app.post('/login', passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/',

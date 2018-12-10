@@ -2,8 +2,6 @@ const passport = require('passport')
 const bcrypt = require('bcrypt')
 const LocalStrategy = require('passport-local').Strategy
 
-const authenticationMiddleware = require('./middleware')
-
 // Generate Password
 const saltRounds = 10
 const myPlaintextPassword = 'my-password'
@@ -58,8 +56,6 @@ function initPassport () {
       })
     }
   ))
-
-  passport.authenticationMiddleware = authenticationMiddleware
 }
 
 module.exports = initPassport

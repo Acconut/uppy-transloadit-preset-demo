@@ -1,7 +1,18 @@
-<h3>Hey! You have to log in before using NodeHero :/</h3>
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="eight wide column ui segment">
+    <h3 class="ui header">Sign in<h3>
 
-<form action="/login" method="post">
-  <input name="username" id="username" type="text" placeholder="Your username" />
-  <input name="password" id="password" type="password" placeholder="Your password"/>
-  <input type="submit" />
-</form>
+    <form action="/login" method="POST" class="ui form">
+      <div class="field">
+        <label>Username</label>
+        <input name="username" placeholder="justinbieber45" type="text">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input name="password" placeholder="n0t1m3f0rh4ck3r5" type="password">
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
