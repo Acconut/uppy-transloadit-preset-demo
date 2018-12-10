@@ -14,14 +14,51 @@
             <img src="{{avatarUrl}}">
           </div>
           <div class="content">
-            <a class="header">{{username}}</a>
+            <span class="header">{{username}}</span>
           </div>
         </div>
       {{/each}}
     </div>
+
+    <form id="form-avatar" class="ui form warning secondary segment" action="/change-avatar" method="POST">
+      <div class="ui warning message"></div>
+
+      <div class="field">
+        <input type="file">
+      </div>
+      <div class="progress"></div>
+
+      <div class="field">
+        <button class="ui button">Submit</button>
+      </div>
+    </form>
 
     <form action="/logout" method="POST" class="ui form">
       <button class="ui button" type="submit">Log out</button>
     </form>
   </div>
 </div>
+
+<script src="/uppy.js"></script>
+<script src="/transloadit-preset.js"></script>
+
+<script>
+var uppyForm = transloadit.form('#form-avatar', {
+  waitForEncoding: true,
+  params: JSON.parse({{{assemblyParams}}}),
+  signature: "{{assemblySignature}}",
+  statusBar: '#form-avatar .progress'
+})
+
+uppyForm.on('error', (err) => {
+  document.querySelector('#form-avatar .warning')
+    .textContent = err.message
+})
+
+uppyForm.on('upload-error', (file, err) => {
+  document.querySelector('#form-avatar .warning')
+    .textContent = err.message
+})
+</script>
+
+<link href="/uppy.css" rel="stylesheet" />

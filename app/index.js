@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({
 
 require('./authentication').init(app)
 
+app.use(express.static('assets'))
 app.use(cookieSession({
   name: 'session',
   keys: ["Tstgertgregert"],

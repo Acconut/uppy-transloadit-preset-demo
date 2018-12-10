@@ -34,8 +34,13 @@ function createUser(username, password, callback) {
   });
 }
 
+function setAvatarUrl(userId, avatarUrl, callback) {
+  db.update({ id: userId}, { $set: { avatarUrl } }, callback)
+}
+
 module.exports = {
   listUsers,
   findUser,
-  createUser
+  createUser,
+  setAvatarUrl
 }

@@ -28,6 +28,7 @@
     "nedb": "^1.8.0",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
+    "transloadit": "^2.0.6",
     "uuid": "^3.3.2"
   }
 }
